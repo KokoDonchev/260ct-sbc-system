@@ -23,7 +23,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+// $config['base_url'] = '';
+
+$site_root  = "http://".$_SERVER['HTTP_HOST'];
+$site_root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$config['base_url'] = $site_root;
+define('HTTP_SITE_URL', $config['base_url']);
+
+# User side
+define('HTTP_CSS_PATH', $config['base_url'].'assets/css/');
+define('HTTP_IMAGES_PATH', $config['base_url'].'assets/images/');
+define('HTTP_JS_PATH', $config['base_url'].'assets/js/');
 
 /*
 |--------------------------------------------------------------------------
