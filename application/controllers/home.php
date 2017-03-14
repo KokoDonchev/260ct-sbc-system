@@ -69,6 +69,10 @@ class Home extends CI_Controller {
         }
     }
 
+    public function do_register() {
+        // code for registering a new member
+    }
+
     public function logout() {
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('username');
