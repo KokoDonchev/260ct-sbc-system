@@ -12,16 +12,19 @@
     <title><?= $page; ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?= HTTP_CSS_PATH; ?>bootstrap.min.css" rel="stylesheet">
+    <link href="<?= HTTP_VENDOR_PATH; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="<?= HTTP_VENDOR_PATH; ?>metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?= HTTP_CSS_PATH; ?>sb-admin.css" rel="stylesheet">
+    <link href="<?= HTTP_CSS_PATH; ?>sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?= HTTP_CSS_PATH; ?>plugins/morris.css" rel="stylesheet">
+    <link href="<?= HTTP_VENDOR_PATH; ?>morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="<?= HTTP_VENDOR_PATH; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

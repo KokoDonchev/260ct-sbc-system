@@ -47,7 +47,7 @@ class Home extends CI_Controller {
                         $this->session->set_userdata(array(
                             'id' => $res['id'],
                             'username' => $res['username'],
-                            'is_admin_login' => true,
+                            'is_logged_in' => true,
                             'user_level' => $res['access_level']
                         ));
                         // $user_data = array(

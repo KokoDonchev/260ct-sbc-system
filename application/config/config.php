@@ -31,6 +31,7 @@ $config['base_url'] = $site_root;
 define('HTTP_SITE_URL', $config['base_url']);
 
 # User side
+define('HTTP_VENDOR_PATH', $config['base_url'].'assets/vendor/');
 define('HTTP_CSS_PATH', $config['base_url'].'assets/css/');
 define('HTTP_IMAGES_PATH', $config['base_url'].'assets/images/');
 define('HTTP_JS_PATH', $config['base_url'].'assets/js/');
