@@ -103,6 +103,14 @@
                 </div>
             </div>
             <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    Test content
+                    <?php
+                        level_management("1022");
+                    ?>
+                </div>
+            </div>
         </div>
         <!-- /#page-wrapper -->
 
