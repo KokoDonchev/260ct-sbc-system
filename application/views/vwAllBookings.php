@@ -7,16 +7,24 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Members</h1>
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h1 class="remove-margin">Bookings</h1>
+                            </div>
+                            <div class="col-lg-2">
+                                <a class="btn btn-default pull-right" href="/bookings/create">Create a Booking</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Kitchen Sink
+                            List of bookings
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

@@ -15,7 +15,15 @@ class Bookings extends CI_Controller {
         $data['page'] = "Bookings";
 
         $this->load->view('snippets/header', $data);
-        $this->load->view('vwMakeBooking');    
+        $this->load->view('vwAllBookings');    
+        $this->load->view('snippets/footer');
+    }
+
+    public function create() {
+        $data['page'] = "New booking";
+
+        $this->load->view('snippets/header', $data);
+        $this->load->view('vwMakeBooking');
         $this->load->view('snippets/footer');
     }
 

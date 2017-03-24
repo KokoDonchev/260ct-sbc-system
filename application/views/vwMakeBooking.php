@@ -7,9 +7,17 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Booking</h1>
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h1 class="remove-margin"><a href="/bookings">Bookings</a> > New Booking</h1>
+                            </div>
+                            <div class="col-lg-2">
+                                <a class="btn btn-default pull-right" href="/bookings/new">Submit Booking</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
@@ -32,8 +40,7 @@
                                             <input class="form-control" placeholder="Your name">
                                             <!--<p class="help-block">Example block-level help text here.</p>-->
                                         </div>
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
+                                        <button type="submit" class="btn btn-default hide">Submit Button</button>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
