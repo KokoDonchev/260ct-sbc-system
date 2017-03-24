@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Account extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -12,12 +12,10 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        $data['page'] = "Dashboard";
-
-        $data['count_users'] = $this->queries->all_users_count();
+        $data['page'] = "Account";
 
         $this->load->view('snippets/header', $data);
-        $this->load->view('vwDashboard');
+        $this->load->view('vwAllMembers');    
         $this->load->view('snippets/footer');
     }
 

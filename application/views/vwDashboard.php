@@ -43,7 +43,7 @@
                                     <i class="fa fa-snowflake-o fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">1</div>
+                                    <div class="huge"><?php echo $count_users; ?></div>
                                     <div>Registered members</div>
                                 </div>
                             </div>

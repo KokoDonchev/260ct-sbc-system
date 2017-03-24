@@ -8,7 +8,6 @@ class Bookings extends CI_Controller {
         if (!$this->session->userdata('is_logged_in')) {
             redirect('home');
         }
-
     }
 
     public function index() {
@@ -25,6 +24,10 @@ class Bookings extends CI_Controller {
         $this->load->view('snippets/header', $data);
         $this->load->view('vwMakeBooking');
         $this->load->view('snippets/footer');
+    }
+
+    public function edit() {
+        $data['page'] = "Edit bookings";
     }
 
 }
