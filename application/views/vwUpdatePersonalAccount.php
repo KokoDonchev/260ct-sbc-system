@@ -59,7 +59,7 @@
                                                     <select name="mobile_number_code" class="form-control">
                                                         <?php foreach ($countries as $key => $country): ?>
                                                             <?php $current_mobile_code = $user_info['mobile_number_code']; ?>
-                                                            <option <?php echo $key == $current_mobile_code ? "selected" : "" ?>>+<?php echo $key ?></option>
+                                                            <option value="<?php echo $key ?>" <?php echo $key == $current_mobile_code ? "selected" : "" ?>>+<?php echo $key ?></option>
                                                         <?php endforeach ?>
                                                     </select> 
                                                 </div>

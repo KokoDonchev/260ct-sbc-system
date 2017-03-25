@@ -455,3 +455,7 @@ table.dataTable thead .sorting:after {
   padding-top: 25px;
   padding-bottom: 25px;
 }
+
+.bookings_instructor {
+  display: none;
+}

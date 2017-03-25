@@ -14,6 +14,11 @@ class Queries extends CI_Model {
         return $query->row_array();
     }
 
+    public function get_specific_user_group($access_level) {
+        $query = $this->db->get_where('booking_users', array('access_level' => $access_level));
+        return $query->result_array();
+    }
+
     /*
     | -------------------------------------------------------------------
     |  Dashboard
@@ -41,6 +46,21 @@ class Queries extends CI_Model {
     |  Bookings
     | -------------------------------------------------------------------
     */
+
+    public function all_bookings() {
+        // Needs more work
+    }
+
+    public function get_booking_types() {
+        $query = $this->db->query("SELECT * FROM `booking_types`");
+        return $query->result_array();
+    }
+
+    public function create_booking($booking_date, $booked_by, $instructor_id, $booking_type) {
+        $sql = "INSERT INTO `booking_sessions` (id, session_date, booked_by, instructor_id, status, booking_type)
+                VALUES ('', ?, ?, ?, 0, ?)";
+        $this->db->query($sql, array($booking_date, $booked_by, $instructor_id, $booking_type));
+    }
 
     /*
     | -------------------------------------------------------------------
