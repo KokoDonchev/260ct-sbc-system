@@ -279,6 +279,20 @@ table.dataTable thead .sorting:after {
 .panel-yellow > a:hover {
   color: #df8a13;
 }
+.panel-pink {
+  border-color: #f45edd;
+}
+.panel-pink > .panel-heading {
+  border-color: #f45edd;
+  color: white;
+  background-color: #f45edd;
+}
+.panel-pink > a {
+  color: #f45edd;
+}
+.panel-pink > a:hover {
+  color: #f45edd;
+}
 .timeline {
   position: relative;
   padding: 20px 0 20px;
@@ -435,4 +449,9 @@ table.dataTable thead .sorting:after {
 
 .remove-margin {
   margin: 0;
+}
+
+.table-bordered>tbody>tr>td {
+  padding-top: 25px;
+  padding-bottom: 25px;
 }

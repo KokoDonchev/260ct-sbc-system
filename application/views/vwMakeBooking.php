@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Date</label>
-                                            <input class="form-control" placeholder="Your name">
+                                            <input class="form-control datepicker" type="text" placeholder="Pick a date">
                                             <!--<p class="help-block">Example block-level help text here.</p>-->
                                         </div>
                                         <button type="submit" class="btn btn-default hide">Submit Button</button>

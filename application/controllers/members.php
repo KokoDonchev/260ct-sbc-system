@@ -14,6 +14,8 @@ class Members extends CI_Controller {
     public function index() {
         $data['page'] = "Members";
 
+        $data['all_users'] = $this->queries->all_users();
+
         $this->load->view('snippets/header', $data);
         $this->load->view('vwAllMembers');    
         $this->load->view('snippets/footer');

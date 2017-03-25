@@ -7,107 +7,34 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard (Manager)</h1>
+                    <h1 class="page-header">Dashboard (<?php echo $this->level_management->get_user_level(); ?>)</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-snowflake-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Bookings</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-snowflake-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $count_users; ?></div>
-                                    <div>Registered members</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-snowflake-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Ski Instructors</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-snowflake-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Slope Operators</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <?php
+                    $tile_managers = array('style' => 'panel-primary', 'title' => 'Managers', 'value' => $count_managers);
+                    $this->view('snippets/dashboard_tile', $tile_managers);
+  
+                    $tile_two = array('style' => 'panel-green', 'title' => 'Registered members', 'value' => $count_members);
+                    $this->view('snippets/dashboard_tile', $tile_two);
+
+                    $tile_three = array('style' => 'panel-yellow', 'title' => 'Ski Instructors', 'value' => $count_instructors);
+                    $this->view('snippets/dashboard_tile', $tile_three);
+                    
+                    $tile_four = array('style' => 'panel-red', 'title' => 'Slope Operators', 'value' => $count_operators);
+                    $this->view('snippets/dashboard_tile', $tile_four);
+
+                    $tile_bookings = array('style' => 'panel-pink', 'title' => 'Bookings', 'value' => $count_bookings);
+                    $this->view('snippets/dashboard_tile', $tile_bookings);
+                ?>
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    Test content
                     <?php
-                        level_management("1022");
+                        echo $user_info['username'];
                     ?>
                 </div>
             </div>

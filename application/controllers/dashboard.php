@@ -8,15 +8,17 @@ class Dashboard extends CI_Controller {
         if (!$this->session->userdata('is_logged_in')) {
             redirect('home');
         }
-        // $this->load->helper('level_management');
     }
 
     public function index() {
         $data['page'] = "Dashboard";
+        $data['user_info'] = $this->level_management->get_user_information();
 
-        $data['count_users'] = $this->queries->all_users_count();
-
-        // $data['level_management_info'] = level_management('10');
+        $data['count_managers'] = $this->queries->get_users_count('1');
+        $data['count_instructors'] = $this->queries->get_users_count('2');
+        $data['count_operators'] = $this->queries->get_users_count('3');
+        $data['count_members'] = $this->queries->get_users_count('4');
+        $data['count_bookings'] = $this->queries->all_bookings_count();
 
         $this->load->view('snippets/header', $data);
         $this->load->view('vwDashboard');

@@ -44,4 +44,10 @@ $(function() {
             break;
         }
     }
+
+
 });
+
+
+// activate datepickers for all elements with a class of `datepicker`
+    $('.datepicker').pikaday({ firstDay: 1 });
