@@ -28,7 +28,7 @@
                                             <th>Username</th>
                                             <th>Full name</th>
                                             <th>Email address</th>
-                                            <th>User type</th>
+                                            <th>Access level</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>

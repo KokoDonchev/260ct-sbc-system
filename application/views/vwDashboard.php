@@ -31,13 +31,6 @@
                 ?>
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php
-                        echo $user_info['username'];
-                    ?>
-                </div>
-            </div>
         </div>
         <!-- /#page-wrapper -->
 

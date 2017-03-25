@@ -53,4 +53,17 @@ class Queries extends CI_Model {
         return $query->result_array();
     }
 
+    /*
+    | -------------------------------------------------------------------
+    |  Account
+    | -------------------------------------------------------------------
+    */
+
+    public function update_account_details($id, $first_name, $last_name, $email_address, $mobile_number_code, $mobile_number, $current_address, $current_town, $address_postcode, $current_country) {
+        $sql = "UPDATE `booking_users`
+                SET first_name = ?, last_name = ?, email_address = ?, mobile_number_code = ?, mobile_number = ?, current_address = ?, current_town = ?, current_country = ?, address_postcode = ?
+                WHERE id = ?";
+        $this->db->query($sql, array($first_name, $last_name, $email_address, $mobile_number_code, $mobile_number, $current_address, $current_town, $current_country, $address_postcode, $id));
+    }
+
 }

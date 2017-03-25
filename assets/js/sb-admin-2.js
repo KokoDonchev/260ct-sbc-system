@@ -45,9 +45,12 @@ $(function() {
         }
     }
 
+    // activate datepickers for all elements with a class of `datepicker`
+    $('.datepicker').pikaday({ firstDay: 1 });
+
+    $('.update_details_button').click(function(event) {
+        event.preventDefault();
+        $('.update_details_button_trigger').click();
+    })
 
 });
-
-
-// activate datepickers for all elements with a class of `datepicker`
-    $('.datepicker').pikaday({ firstDay: 1 });
