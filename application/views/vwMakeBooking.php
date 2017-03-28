@@ -25,7 +25,7 @@
                 <?php echo validation_errors(); ?>
                 <?php
                     if (isset($status) && $status) {
-                        echo "<div class='alert alert-success' role='alert'>". $status ."</div>";
+                        echo "<div class='alert alert-" . $status['type'] . "' role='alert'>". $status['message'] ."</div>";
                     }
                 ?>
                 </div>

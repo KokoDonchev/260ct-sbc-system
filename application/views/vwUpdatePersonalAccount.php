@@ -104,6 +104,12 @@
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-6">
                     <h2 style="margin-top: 0;">Membership information</h2>
+                    <?php if ($count_memberships < 10): ?>
+                        <p>You currently have <b><?php echo $count_memberships ?></b> bookings, to be able to apply for Royal membership you need to have at least <b>10</b>.</p>
+                    <?php else: ?>
+                        <p>You can apply for Royal membership. To proceed with your application click the button below.</p>
+                        <a href="#" class="btn btn-success">Apply now</a> 
+                    <?php endif; ?>
                 </div>
             </div>
             <!-- /.row -->

@@ -14,6 +14,18 @@ class Bookings extends CI_Controller {
     public function index() {
         $data['page'] = "Bookings";
 
+        $data['user_info'] = $this->level_management->get_user_information();
+        $booking_data = [];
+        $booking_list = $this->queries->all_bookings($data['user_info']['access_level'], $data['user_info']['id']);
+
+        foreach ($booking_list as $key => $single_booking) {
+            $booking_data[$key] = $single_booking;
+            $booking_data[$key]['instructor'] = $this->queries->all_users($booking_data[$key]['instructor_id']);
+            $booking_data[$key]['member_booked'] = $this->queries->all_users($booking_data[$key]['booked_by']);
+        }
+
+        $data['bookings_data'] = $booking_data;
+
         $this->load->view('snippets/header', $data);
         $this->load->view('vwAllBookings');    
         $this->load->view('snippets/footer');
@@ -46,9 +58,15 @@ class Bookings extends CI_Controller {
             $this->load->view('snippets/footer');
         } else {
             // new booking query
-            $this->queries->create_booking($booking_date, $user_id, $session_instructor_id, $session_type_id);
-
-            $data['status'] = "Your booking was successful!";
+            $number_of_sessions = $this->queries->check_for_active_session($user_id);
+            if ($number_of_sessions > 0) {
+                $data['status']['type'] = "warning";
+                $data['status']['message'] = "You cannot have more than 1 unchecked sessions!";
+            } else {
+                $this->queries->create_booking($booking_date, $user_id, $session_instructor_id, $session_type_id);
+                $data['status']['type'] = "success";
+                $data['status']['message'] = "Your booking was successful!";
+            }
             $this->load->view('snippets/header', $data);
             $this->load->view('vwMakeBooking');
             $this->load->view('snippets/footer');

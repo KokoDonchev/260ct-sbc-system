@@ -32,22 +32,23 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Username</th>
-                                            <th>User level</th>
+                                            <th style="width: 30px">#</th>
+                                            <th style="width: 150px">Date</th>
+                                            <th>Booked by</th>
+                                            <th>Instructor</th>
+                                            <th>Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>koko</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>koko2</td>
-                                            <td>1</td>
-                                        </tr>
+                                        <?php foreach ($bookings_data as $booking): ?>
+                                            <tr>
+                                                <td><?php echo $booking['id'] ?></td>
+                                                <td><?php echo $booking['session_date'] ?></td>
+                                                <td><?php echo $booking['member_booked']['first_name']. " ".$booking['member_booked']['last_name'] ?></td>
+                                                <td><?php echo $booking['instructor_id'] == 0 ? "No instructor" : "<b>".$booking['instructor']['first_name']." ".$booking['instructor']['last_name']. "</b>" ?></td>
+                                                <td>Options</td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

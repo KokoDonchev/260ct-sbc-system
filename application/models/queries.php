@@ -47,8 +47,19 @@ class Queries extends CI_Model {
     | -------------------------------------------------------------------
     */
 
-    public function all_bookings() {
-        // Needs more work
+    public function all_bookings($access_level, $user_id) {
+        if ($access_level == 1 || $access_level == 3) {
+            $query = $this->db->query("SELECT * FROM `booking_sessions`");
+            return $query->result_array();
+        }
+        elseif ($access_level == 2) {
+            $query = $this->db->get_where('booking_sessions', array('instructor_id' => $user_id));
+            return $query->result_array();
+        }
+        elseif ($access_level == 4) {
+            $query = $this->db->get_where('booking_sessions', array('booked_by' => $user_id));
+            return $query->result_array();
+        }
     }
 
     public function get_booking_types() {
@@ -62,15 +73,37 @@ class Queries extends CI_Model {
         $this->db->query($sql, array($booking_date, $booked_by, $instructor_id, $booking_type));
     }
 
+    public function check_for_active_session($user_id) {
+        // where status is 0
+        $query = $this->db->get_where('booking_sessions', array('booked_by' => $user_id, 'status' => 0));
+        return $query->num_rows();
+    }
+
     /*
     | -------------------------------------------------------------------
     |  Members
     | -------------------------------------------------------------------
     */
 
-    public function all_users() {
-        $query = $this->db->query('SELECT * FROM `booking_users`');
-        return $query->result_array();
+    public function all_users($user_id = false) {
+        if ($user_id === false) {
+            $query = $this->db->query('SELECT * FROM `booking_users`');
+            return $query->result_array();
+        } else {
+            $query = $this->db->get_where('booking_users', array('id' => $user_id));
+            return $query->row_array();
+        }
+    }
+
+    /*
+    | -------------------------------------------------------------------
+    |  Membership
+    | -------------------------------------------------------------------
+    */
+
+    public function check_membership($user_id) {
+        $query = $this->db->get_where('booking_sessions', array('booked_by' => $user_id, 'status' => 1));
+        return $query->num_rows();
     }
 
     /*
