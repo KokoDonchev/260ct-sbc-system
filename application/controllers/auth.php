@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Auth extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -9,7 +9,7 @@ class Home extends CI_Controller {
     }
 
     public function index() {
-        if ($this->session->userdata('is_admin_login')) {
+        if ($this->session->userdata('is_logged_in')) {
             redirect('dashboard');
         } else {
             $data['page'] = "Login";
@@ -23,7 +23,7 @@ class Home extends CI_Controller {
     public function do_login() {            
         $data['page'] = "Login";
         
-        if ($this->session->userdata('is_admin_login')) { 
+        if ($this->session->userdata('is_logged_in')) { 
             redirect('dashboard');
         } else {
             $user = html_escape($this->input->post('username'));
@@ -39,8 +39,6 @@ class Home extends CI_Controller {
                 $enc_pass = md5($salt . $password);
                 $sql = "SELECT * FROM booking_users WHERE username = ? AND password = ?";
                 $val = $this->db->query($sql, array($user, $enc_pass));
-
-                // var_dump($val->num_rows());
                 
                 if ($val->num_rows()) {
                     foreach ($val->result_array() as $recs => $res) {
@@ -50,12 +48,6 @@ class Home extends CI_Controller {
                             'is_logged_in' => true,
                             'user_level' => $res['access_level']
                         ));
-                        // $user_data = array(
-                        //     'lastActivity' => $local_time,
-                        //     'lastIP' => $user_ip,
-                        // );
-                        // $this->db->where('id', $res['id']);
-                        // $this->db->update('booking_users', $user_data);
                     }
                     
                     redirect('dashboard');
@@ -76,12 +68,11 @@ class Home extends CI_Controller {
     public function logout() {
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('username');
-        //$this->session->unset_userdata('email');
-        $this->session->unset_userdata('is_admin_login');   
+        $this->session->unset_userdata('is_logged_in');   
         $this->session->sess_destroy();
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");
-        redirect('home', 'refresh');
+        redirect('auth', 'refresh');
     }
 
 }

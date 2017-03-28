@@ -12,6 +12,9 @@
 <script src="<?= HTTP_VENDOR_PATH ?>morrisjs/morris.min.js"></script>
 <script src="<?= HTTP_JS_PATH ?>morris-data.js"></script>
 
+<script src="<?= HTTP_JS_PATH ?>pikaday.js"></script>
+<script src="<?= HTTP_JS_PATH ?>pikaday.jquery.js"></script>
+
 <!-- Custom Theme JavaScript -->
 <script src="<?= HTTP_JS_PATH ?>sb-admin-2.js"></script>
 

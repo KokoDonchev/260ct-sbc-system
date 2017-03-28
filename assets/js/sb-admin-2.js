@@ -44,4 +44,30 @@ $(function() {
             break;
         }
     }
+
+    // activate datepickers for all elements with a class of `datepicker`
+    $('.datepicker').pikaday({ firstDay: 1 });
+
+    $('.update_details_button').click(function(event) {
+        event.preventDefault();
+        $('.update_details_button_trigger').click();
+    });
+
+    $('.create_booking_button').click(function(event) {
+        event.preventDefault();
+        $('.create_booking_trigger').click();
+    });
+
+    $('.booking_type_dropdown').change(function() {
+        var is_instructor = $('.booking_type_dropdown option:selected').data('instructor');
+        console.log(is_instructor);
+        if (is_instructor == 0) {
+            $('.bookings_instructor').hide();
+            $('.is_instructor').val('0');
+        } else {
+            $('.bookings_instructor').show();
+            $('.is_instructor').val('1');
+        }
+    });
+
 });

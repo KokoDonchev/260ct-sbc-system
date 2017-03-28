@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="<?= HTTP_CSS_PATH; ?>sb-admin-2.css" rel="stylesheet">
+    <link href="<?= HTTP_CSS_PATH; ?>pikaday.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="<?= HTTP_VENDOR_PATH; ?>morrisjs/morris.css" rel="stylesheet">
