@@ -6,6 +6,7 @@ class Auth extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
     }
 
     public function index() {
@@ -62,7 +63,55 @@ class Auth extends CI_Controller {
     }
 
     public function do_register() {
-        // code for registering a new member
+        $data['page'] = "Register";
+
+        $username = html_escape($this->input->post('username'));
+        $email_address = html_escape($this->input->post('email_address'));
+        $first_name = html_escape($this->input->post('first_name'));
+        $last_name = html_escape($this->input->post('last_name'));
+        $password_one = html_escape($this->input->post('password_one'));
+        $password_two = html_escape($this->input->post('password_two'));
+
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('email_address', 'email', 'required');
+        $this->form_validation->set_rules('first_name', 'first name', 'required');
+        $this->form_validation->set_rules('last_name', 'last name', 'required');
+        $this->form_validation->set_rules('password_one', 'password', 'required');
+        $this->form_validation->set_rules('password_two', 'repeated password', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            // If the form is not submitted
+            $this->load->view('snippets/header', $data);
+            $this->load->view('vwRegister');
+            $this->load->view('snippets/footer');
+        } else {
+            $check_username = $this->queries->check_username($username);
+            if ($check_username > 0) {
+                $data['status']['type'] = "warning";
+                $data['status']['message'] = "The username is already taken";
+            } else {
+                if ($password_one != $password_two) {
+                    $data['status']['type'] = "warning";
+                    $data['status']['message'] = "The passwords don't match";
+                } else {
+                    // SUCCESSFUL PART
+                    $salt = '5&JDDlwz%Rwh!t2Yg-Igae@QxPzFTSId';
+                    $enc_pass = md5($salt . $password_one);
+                    $this->queries->create_account($username, $enc_pass, $email_address, $first_name, $last_name);
+                    $get_user_information = $this->queries->get_username($username);
+                    $this->session->set_userdata(array(
+                        'id' => $get_user_information['id'],
+                        'username' => $get_user_information['username'],
+                        'is_logged_in' => true,
+                        'user_level' => $get_user_information['access_level']
+                    ));
+                    redirect('dashboard');
+                }
+            }
+            $this->load->view('snippets/header', $data);
+            $this->load->view('vwRegister');
+            $this->load->view('snippets/footer');
+        }
     }
 
     public function logout() {

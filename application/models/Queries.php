@@ -119,6 +119,22 @@ class Queries extends CI_Model {
     | -------------------------------------------------------------------
     */
 
+    public function check_username($username) {
+        $query = $this->db->get_where('booking_users', array('username' => $username));
+        return $query->num_rows();
+    }
+
+    public function create_account($username, $password, $email_address, $first_name, $last_name) {
+        $sql = "INSERT INTO `booking_users` (id, username, password, email_address, first_name, last_name, access_level, membership_level)
+                VALUES ('', ?, ?, ?, ?, ?, 4, 1)";
+        $this->db->query($sql, array($username, $password, $email_address, $first_name, $last_name));
+    }
+
+    public function get_username($username) {
+        $query = $this->db->get_where('booking_users', array('username' => $username));
+        return $query->row_array();
+    }
+
     public function update_account_details($id, $first_name, $last_name, $email_address, $mobile_number_code, $mobile_number, $current_address, $current_town, $address_postcode, $current_country) {
         $sql = "UPDATE `booking_users`
                 SET first_name = ?, last_name = ?, email_address = ?, mobile_number_code = ?, mobile_number = ?, current_address = ?, current_town = ?, current_country = ?, address_postcode = ?

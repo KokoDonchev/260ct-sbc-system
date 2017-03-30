@@ -26,6 +26,7 @@
                         </form>
                     </div>
                 </div>
+                <div class="text-center"><a href="/auth/do_register">Register</a></div>
             </div>
         </div>
     </div>
