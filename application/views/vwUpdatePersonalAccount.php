@@ -127,7 +127,7 @@ img {
 
                     <!-- MEMBERSHIP PART - TOMEK'S PROPERTY - TURN BACK -->
                     
-                    <?php  //$count_memberships = 10 ?>
+                    <?php  $count_memberships = 10 ?>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
