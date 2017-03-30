@@ -1,3 +1,23 @@
+<!-- Importing progress bar resources -->
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Tomek's manual styles -->
+<style>              
+img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+</style>
+
 <body>
 
     <div id="wrapper">
@@ -103,18 +123,80 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-6">
-                    <h2 style="margin-top: 0;">Membership information</h2>
-                    <?php if ($count_memberships < 10): ?>
-                        <p>You currently have <b><?php echo $count_memberships ?></b> bookings, to be able to apply for Royal membership you need to have at least <b>10</b>.</p>
-                    <?php else: ?>
-                        <p>You can apply for Royal membership. To proceed with your application click the button below.</p>
-                        <a href="#" class="btn btn-success">Apply now</a> 
-                    <?php endif; ?>
+
+
+                    <!-- MEMBERSHIP PART - TOMEK'S PROPERTY - TURN BACK -->
+                    
+                    <?php  //$count_memberships = 10 ?>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Membership information
+                        </div>
+                        <div class="center"><br><br>
+                            <h2 style="margin-top: 0;">Current membership:</h2><br>
+                     
+
+                            <?php if ($membership_type == 1):
+                                ?><img src="./res/Basic.png" alt="">
+                                <?php $progress = $count_memberships * 10;
+                                
+
+                                
+                                if ($count_memberships<10):?>
+
+                                    <br>
+                                    <h2 style="margin-top: 0;">Progress:</h2><br>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-info" style="width:<?php echo $progress; ?>%">
+                                            <?php echo $count_memberships; ?> out of 10
+                                        </div>
+                                    </div>
+                                    <p>You currently have <b><?php echo $count_memberships ?></b> bookings. <br>To be able to apply for Royal membership you need to have at least <b>10</b> bookings.<br>
+                                        Royal membership gives its users wide range of new features - but most importantly it gives you a lower rate for standard or training sessions.
+                                        Normally, one needs to pay loyalty fee, but if you will book at least <b>10</b> bookings within our system. </p>
+
+                                <?php else:?>
+
+                                    <br>
+                                    <h2 style="margin-top: 0;">Progress:</h2><br>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-success" style="width:<?php echo $progress; ?>%">
+                                            <?php echo $count_memberships; ?> out of 10
+                                        </div>
+                                    </div>
+                                    <p><b>You can apply for Royal membership!</b><br> 
+                                        We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
+                                        Normally, all users have to pay the membership fee.
+                                        To proceed with your application click the button below.</p><br>
+                                    <a href="/membership/create" class="btn btn-success">Apply now</a> 
+
+                                <?php endif;
+                                
+                                
+                            else: ?>
+                                <img src="./res/Royal.png" alt=""><br>
+                                <p><b>Your Royal membership is active!</b><br> <br>
+                                        We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
+                                        Normally, all users have to pay the membership fee.
+                                        To cancel your membership click the button below.</p>
+                                <br><a href="/membership/deactivate" class="btn btn-success">Cancel Royal membership</a> 
+                                <?php
+                                
+                            endif;
+                            
+                            ?>
+                        </div>
+                        <br><br>
+                    </div>
+
+                    <!-- END OF TOMEK'S PROPERTY -->
+                    
                 </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
+    
     </div>
     <!-- /#wrapper -->

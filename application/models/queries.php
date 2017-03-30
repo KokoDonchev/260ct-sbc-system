@@ -106,6 +106,13 @@ class Queries extends CI_Model {
         return $query->num_rows();
     }
 
+    public function update_membership($user_id, $membership_level) {
+        $sql = "UPDATE `booking_users`
+        SET membership_level = ?
+        WHERE id = ?";
+        $this->db->query($sql, array($membership_level, $user_id));
+    }
+
     /*
     | -------------------------------------------------------------------
     |  Account

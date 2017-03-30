@@ -21,6 +21,7 @@ class Account extends CI_Controller {
         $user_id = $this->session->userdata('id');
 
         $data['count_memberships'] = $this->queries->check_membership($user_id);
+        $data['membership_type'] = $this->queries->get_single_user_information($user_id)["membership_level"];
 
         $first_name = html_escape($this->input->post('first_name'));
         $last_name = html_escape($this->input->post('last_name'));
