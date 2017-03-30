@@ -36,6 +36,7 @@
                                             <th style="width: 150px">Date</th>
                                             <th>Booked by</th>
                                             <th>Instructor</th>
+                                            <th>Confirmed*</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
@@ -46,12 +47,20 @@
                                                 <td><?php echo $booking['session_date'] ?></td>
                                                 <td><?php echo $booking['member_booked']['first_name']. " ".$booking['member_booked']['last_name'] ?></td>
                                                 <td><?php echo $booking['instructor_id'] == 0 ? "No instructor" : "<b>".$booking['instructor']['first_name']." ".$booking['instructor']['last_name']. "</b>" ?></td>
+                                                <td><?php if ($booking['status']==1){
+                                                    echo '<span style="color:green;"> YES </span>';
+                                                }
+                                                else{
+                                                    echo '<span style="color:red;"> NO </span>';
+                                                } ?> </td>
+
                                                 <td>Options</td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
+                            * All new bookings need to be confirmed by the slope operator first.
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->

@@ -133,6 +133,7 @@ img {
                         <div class="panel-heading">
                             Membership information
                         </div>
+                        <div class="panel-body">
                         <div class="center"><br><br>
                             <h2 style="margin-top: 0;">Current membership:</h2><br>
                      
@@ -180,7 +181,7 @@ img {
                                         We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
                                         Normally, all users have to pay the membership fee.
                                         To cancel your membership click the button below.</p>
-                                <br><a href="/membership/deactivate" class="btn btn-success">Cancel Royal membership</a> 
+                                <br><a href="/membership/activate/1" class="btn btn-success">Cancel Royal membership</a> 
                                 <?php
                                 
                             endif;
@@ -188,6 +189,7 @@ img {
                             ?>
                         </div>
                         <br><br>
+                    </div>
                     </div>
 
                     <!-- END OF TOMEK'S PROPERTY -->

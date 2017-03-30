@@ -22,19 +22,13 @@ class Membership extends CI_Controller {
         $this->load->view('snippets/footer');
     }
 
-    public function activate() {
+    public function activate($mode) {
 
             $user_id = $this->session->userdata('id');
-            $this->queries->update_membership($user_id, 2);
+            $this->queries->update_membership($user_id, $mode);
             redirect('account');
     }
     
-    public function deactivate() {
-            // DONCHEV: This function does the same thing as activate, but with different membership parameter (1 instead of 2)
-            $user_id = $this->session->userdata('id');
-            $this->queries->update_membership($user_id, 1);
-            redirect('account');
-    }
 
     public function create() {
 

@@ -46,7 +46,7 @@
                                             You can also cancel your request, by pressing "Cancel button.</p><br>
                                         </div>
                                         <a href="/account" class="btn btn">Cancel</a> 
-                                        <a href="/membership/activate" class=" btn btn-success pull-right">Confirm</a> 
+                                        <a href="/membership/activate/2" class=" btn btn-success pull-right">Confirm</a> 
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
