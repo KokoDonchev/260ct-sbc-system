@@ -12,10 +12,9 @@ class Membership extends CI_Controller {
     }
 
     public function index() {
-        $data['page'] = "All versions of Tomasz";
         
-        $data['all_users'] = $this->queries->all_users();
-
+        $data['user_id'] = $this->session->userdata('id');
+        $data['user'] = $this->queries->get_single_user_information($data['user_id']);
 
         $this->load->view('snippets/header', $data);
         $this->load->view('vwConfirmMembership');    
@@ -32,8 +31,10 @@ class Membership extends CI_Controller {
 
     public function create() {
 
+            $data['user_id'] = $this->session->userdata('id');
+            $data['user'] = $this->queries->get_single_user_information($data['user_id']);
 
-            $this->load->view('snippets/header');
+            $this->load->view('snippets/header', $data);
             $this->load->view('vwConfirmMembership');
             $this->load->view('snippets/footer');
         

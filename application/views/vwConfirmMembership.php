@@ -44,6 +44,9 @@
                                             Normally, all users have to pay the membership fee, but our company values their long-time customers!<br><br>
                                             To proceed with your application click the "Confirm" button below.<br>
                                             You can also cancel your request, by pressing "Cancel button.</p><br>
+                                            
+
+                                            <?php if ($user['card_number']==NULL): echo "CARD DETAILS NEEDED"; endif; ?>
                                         </div>
                                         <a href="/account" class="btn btn">Cancel</a> 
                                         <a href="/membership/activate/2" class=" btn btn-success pull-right">Confirm</a> 
