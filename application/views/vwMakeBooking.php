@@ -66,9 +66,14 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Session type</label>
+                                            <?php $discount = 1.0;
+                                            if ($user_info["membership_level"] == "2"):
+                                                $discount = 0.7; ?><br>
+                                                <?php echo  '<span style="color:green;"> Royal membership detected. 30% discount applied! </span>' ?><br>
+                                            <?php endif; ?>
                                             <select name="booking_type" class="form-control booking_type_dropdown">
                                                 <?php foreach ($booking_types as $type): ?>
-                                                    <option data-instructor="<?php echo $type['instructor_option'] ?>" value="<?php echo $type['id'] ?>"><?php echo $type['title'] ?> - £<?php echo money_format('%i', $type['price']) ?></option>
+                                                    <option data-instructor="<?php echo $type['instructor_option'] ?>" value="<?php echo $type['id'] ?>"><?php echo $type['title'] ?> - £<?php echo money_format('%i', $type['price'] * $discount) ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                             <input type="hidden" value="0" class="is_instructor" name="is_instructor">
