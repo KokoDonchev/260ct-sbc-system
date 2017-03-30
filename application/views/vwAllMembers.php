@@ -29,6 +29,7 @@
                                             <th>Full name</th>
                                             <th>Email address</th>
                                             <th>Access level</th>
+                                            <th>Membership</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
@@ -41,6 +42,7 @@
                                                 <td><?php echo $more_user_info['first_name'] ?> <?php echo $more_user_info['last_name'] ?></td>
                                                 <td><?php echo $more_user_info['email_address'] ?></td>
                                                 <td><?php echo $this->level_management->get_user_level($user['id']) ?></td>
+                                                <td><?php if($user['membership_level']==1): echo "Basic"; else: echo "Royal"; endif; ?></td>
                                                 <td>Options</td>
                                             </tr>
                                         <?php endforeach ?>
