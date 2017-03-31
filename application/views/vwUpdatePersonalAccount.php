@@ -163,7 +163,7 @@ img {
                                         We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
                                         Normally, all users have to pay the membership fee.
                                         To proceed with your application click the button below.</p><br>
-                                    <a href="/membership/create" class="btn btn-success">Apply now</a> 
+                                    <a href="/membership" class="btn btn-success">Apply now</a> 
 
                                 <?php endif;
                                 

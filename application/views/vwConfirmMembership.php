@@ -46,11 +46,53 @@
                                             You can also cancel your request, by pressing "Cancel button.</p><br>
                                             
 
-                                            <?php if ($user['card_number']==NULL): echo "CARD DETAILS NEEDED"; endif; ?>
+                                            <?php if ($user['card_number']==NULL): ?>
                                         </div>
                                         <a href="/account" class="btn btn">Cancel</a> 
                                         <a href="/membership/activate/2" class=" btn btn-success pull-right">Confirm</a> 
                                     </form>
+
+<form method="POST" action="" role="form">
+                                        <div class="form-group">                                   
+                                            
+                                            
+
+                                            <div>
+                                                 <label>Card number</label>
+                                                <input name="card_number" class="form-control" value="<?php echo $user_info['card_number'] ?>">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Card Type</label>
+                                                <select name="card_type" class="form-control">
+                                                    <?php foreach (array("VISA", "MasterCard", "Visa Debit", "Maestro", "Visa Electron (UKE)", "American Express") as $country): ?>
+                                                        <?php $current_card = $user_info['card_type']; ?>
+                                                        <option <?php echo $country == $current_card ? "selected" : "" ?>><?php echo $country ?></option>
+                                                    <?php endforeach ?>
+                                                </select> 
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Security code</label>
+                                                <input name="security_code" class="form-control" value="<?php echo $user_info['security_code'] ?>" placeholder="3 digits code on the back of the card">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Expiry Date</label>
+                                                <input name="expiry_date" class="form-control datepicker" value="<?php echo $user_info['expiry_date'] ?>" placeholder="Expiry Date">
+                                            </div>
+
+                                            <button type="submit" class="update_details_button_trigger btn btn-default">Submit Button</button>
+
+
+
+
+                                            <?php endif; ?>
+                                        </div>
+                                        <a href="/account" class="btn btn">Cancel</a> 
+                                        <a href="/membership/activate/2" class=" btn btn-success pull-right">Confirm</a> 
+                                    </form>
+
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
