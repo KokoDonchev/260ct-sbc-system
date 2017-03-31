@@ -12,6 +12,8 @@ class Membership extends CI_Controller {
     }
 
     public function index() {
+
+        $data['page'] = "Membership";
         
         $data['user_id'] = $this->session->userdata('id');
         $data['user'] = $this->queries->get_single_user_information($data['user_id']);

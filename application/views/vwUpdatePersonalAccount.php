@@ -132,7 +132,7 @@ img {
                      
 
                             <?php if ($membership_type == 1):
-                                ?><img src="./res/Basic.png" alt="">
+                                ?><img src="<?php echo HTTP_IMAGES_PATH ?>Basic.png" alt="">
                                 <?php $progress = $count_memberships * 10;
                                 
 
@@ -169,7 +169,7 @@ img {
                                 
                                 
                             else: ?>
-                                <img src="./res/Royal.png" alt=""><br>
+                                <img src="<?php echo HTTP_IMAGES_PATH ?>Royal.png" alt=""><br>
                                 <p><b>Your Royal membership is active!</b><br> <br>
                                         We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
                                         Normally, all users have to pay the membership fee.

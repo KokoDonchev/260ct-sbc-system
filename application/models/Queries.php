@@ -113,7 +113,6 @@ class Queries extends CI_Model {
         $this->db->query($sql, array($membership_level, $user_id));
     }
 
-
     public function update_bank_details($id, $card_number, $card_type, $security_code, $expiry_date) {
         $sql = "UPDATE `booking_users`
                 SET card_number = ?, card_type = ?, security_code = ?, expiry_date = ?
