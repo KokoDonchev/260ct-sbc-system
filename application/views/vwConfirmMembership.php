@@ -36,23 +36,33 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="POST" action="" role="form">
-                                        <div class="form-group">
                                             <br><label>Congratulations!</label><br><br>
                                             You have reached required number of bookings to qualify for a royal membership!
                                             We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
                                             Normally, all users have to pay the membership fee, but our company values their long-time customers!<br><br>
                                             To proceed with your application click the "Confirm" button below.<br>
-                                            You can also cancel your request, by pressing "Cancel button.</p><br>
-                                            
+                                            You can also cancel your request, by pressing "Cancel button.</p><br>       
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                    
 
-                                            <?php if ($user['card_number']==NULL): ?>
-                                        </div>
-                                        <a href="/account" class="btn btn">Cancel</a> 
-                                        <a href="/membership/activate/2" class=" btn btn-success pull-right">Confirm</a> 
-                                    </form>
+                                    <!-- CARD DETAILS -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Royal Membership
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
 
-<form method="POST" action="" role="form">
+                                     <?php if ($user['card_number']==NULL): ?>
+                                    <form method="POST" action="" role="form">
                                         <div class="form-group">                                   
                                             
                                             
@@ -83,8 +93,6 @@
                                             </div>
 
                                             <button type="submit" class="update_details_button_trigger btn btn-default">Submit Button</button>
-
-
 
 
                                             <?php endif; ?>
