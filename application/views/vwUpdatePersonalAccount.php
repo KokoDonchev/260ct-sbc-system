@@ -120,7 +120,7 @@ img {
 
                     <!-- MEMBERSHIP PART - TOMEK'S PROPERTY - TURN BACK -->
                     
-                    <?php  $count_memberships = 10 ?>
+                    <?php  //$count_memberships = 10 ?>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -148,7 +148,10 @@ img {
                                     </div>
                                     <p>You currently have <b><?php echo $count_memberships ?></b> bookings. <br>To be able to apply for Royal membership you need to have at least <b>10</b> bookings.<br>
                                         Royal membership gives its users wide range of new features - but most importantly it gives you a lower rate for standard or training sessions.
-                                        Normally, one needs to pay loyalty fee, but if you will book at least <b>10</b> bookings within our system. </p>
+                                        Normally, one needs to pay loyalty fee, but if you will book at least <b>10</b> bookings within our system, you will gain it for <b>free</b>. </p>
+                                        <br>
+                                        If you wish to pay loyalty fee to gain Royalty Membership, click below button:<br><br>
+                                        <a href="/membership/pay" class="btn btn-info">Pay Loyalty Fee</a> 
 
                                 <?php else:?>
 
@@ -171,8 +174,9 @@ img {
                             else: ?>
                                 <img src="<?php echo HTTP_IMAGES_PATH ?>Royal.png" alt=""><br>
                                 <p><b>Your Royal membership is active!</b><br> <br>
-                                        We wanted to thank you for your trust and loyalty - please accept our Royal membership for free as a gift.
-                                        Normally, all users have to pay the membership fee.
+                                        We wanted to thank you for your trust and loyalty.<br>
+                                        Your membership is active until: <b> <?php echo $user_info['membership_end']; ?><br></b><br>
+                                        
                                         To cancel your membership click the button below.</p>
                                 <br><a href="/membership/activate/1" class="btn btn-success">Cancel Royal membership</a> 
                                 <?php

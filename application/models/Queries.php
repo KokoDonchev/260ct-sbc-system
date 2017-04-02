@@ -107,10 +107,17 @@ class Queries extends CI_Model {
     }
 
     public function update_membership($user_id, $membership_level) {
+        if ($membership_level == 2):{
+            $date = new DateTime;
+            $date->modify("+1 year");
+            $membership_end = $date->format("Y-m-d");}
+        else:
+            $membership_end = 1;
+        endif;
         $sql = "UPDATE `booking_users`
-        SET membership_level = ?
+        SET membership_level = ?, membership_end = ?
         WHERE id = ?";
-        $this->db->query($sql, array($membership_level, $user_id));
+        $this->db->query($sql, array($membership_level, $membership_end, $user_id));
     }
 
     public function update_bank_details($id, $card_number, $card_type, $security_code, $expiry_date) {
