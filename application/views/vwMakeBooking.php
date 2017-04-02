@@ -86,6 +86,18 @@
                                                 <?php endforeach ?>
                                             </select> 
                                         </div>
+                                        <div class="form-group">
+                                            <label>Payment</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="#" class="trigger-payment-panel btn btn-success">Pay now</a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="#" class="trigger-booking-without-payment pull-right btn btn-info">Pay later</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="is_payment_now" value="0">
                                         <button type="submit" class="create_booking_trigger btn btn-default hide">Submit Button</button>
                                     </form>
                                 </div>
@@ -100,6 +112,9 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+            <div class="row">
+                <?php $this->view('snippets/paymentPanelBooking'); ?>
+            </div>
         </div>
         <!-- /#page-wrapper -->
 

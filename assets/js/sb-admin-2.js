@@ -70,4 +70,12 @@ $(function() {
         }
     });
 
+    $('.trigger-payment-panel').click(function(event) { // if pay now button clicked
+        event.preventDefault(); // preventing anchor from redirecting to another page
+        $('.payment-panel-booking').removeClass('hide'); // showing the panel for payment information
+
+        // setting the value of the hidden input to 1 helps to detemine wether to check for the payment info
+        $('input[name="is_payment_now"]').val("1"); 
+    });
+
 });
