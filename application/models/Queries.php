@@ -95,6 +95,35 @@ class Queries extends CI_Model {
         }
     }
 
+    public function remove_user($user_id = false) {
+        if ($user_id === false) {
+            return 0;
+        } else {
+            $this->db->where('id', $user_id);
+            $this->db->delete('booking_users');
+        }
+    }
+
+    public function make_instructor($user_id = false) {
+        if ($user_id === false) {
+            return 0;
+        } else {
+            $this->db->set('access_level', 2);
+            $this->db->where('id', $user_id);
+            $this->db->update('booking_users');
+        }
+    }
+
+    public function make_slope($user_id = false) {
+        if ($user_id === false) {
+            return 0;
+        } else {
+            $this->db->set('access_level', 3);
+            $this->db->where('id', $user_id);
+            $this->db->update('booking_users');
+        }
+    }
+
     /*
     | -------------------------------------------------------------------
     |  Membership
