@@ -13,6 +13,7 @@
                                 echo "<div class='alert alert-" . $status['type'] . "' role='alert'>". $status['message'] ."</div>";
                             }
                         ?>
+                        <!-- REGISTRATION FORM -->
                         <form id="form1" name="form1" method="post" action="">
                             <fieldset>
                                 <div class="form-group">
@@ -48,6 +49,7 @@
                         </form>
                     </div>
                 </div>
+                <!-- Back to login button -->
                 <div><a href="/auth">< Back to login</a></div>
             </div>
         </div>

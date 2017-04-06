@@ -61,7 +61,7 @@ class Auth extends CI_Controller {
             }
         }
     }
-
+//REGISTER FUNCTION
     public function do_register() {
         $data['page'] = "Register";
 
@@ -71,47 +71,69 @@ class Auth extends CI_Controller {
         $last_name = html_escape($this->input->post('last_name'));
         $password_one = html_escape($this->input->post('password_one'));
         $password_two = html_escape($this->input->post('password_two'));
-
+        //Information is taken from the fields in the form
+        
+        
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('email_address', 'email', 'required');
         $this->form_validation->set_rules('first_name', 'first name', 'required');
         $this->form_validation->set_rules('last_name', 'last name', 'required');
         $this->form_validation->set_rules('password_one', 'password', 'required');
         $this->form_validation->set_rules('password_two', 'repeated password', 'required');
-
+        //All firlds in the form are mandatory 
+        //If a field is left empty it will raise an error with the field that is empty
+        
+        
         if ($this->form_validation->run() == FALSE) {
             // If the form is not submitted
             $this->load->view('snippets/header', $data);
             $this->load->view('vwRegister');
             $this->load->view('snippets/footer');
         } else {
+            //Checks if the username is already taken
             $check_username = $this->queries->check_username($username);
             if ($check_username > 0) {
                 $data['status']['type'] = "warning";
                 $data['status']['message'] = "The username is already taken";
             } else {
+                //Checks if the passwords match
                 if ($password_one != $password_two) {
                     $data['status']['type'] = "warning";
                     $data['status']['message'] = "The passwords don't match";
                 } else {
-                    // SUCCESSFUL PART
-                    $salt = '5&JDDlwz%Rwh!t2Yg-Igae@QxPzFTSId';
-                    $enc_pass = md5($salt . $password_one);
-                    $this->queries->create_account($username, $enc_pass, $email_address, $first_name, $last_name);
-                    $get_user_information = $this->queries->get_username($username);
-                    $this->session->set_userdata(array(
-                        'id' => $get_user_information['id'],
-                        'username' => $get_user_information['username'],
-                        'is_logged_in' => true,
-                        'user_level' => $get_user_information['access_level']
-                    ));
-                    redirect('dashboard');
-                }
-            }
+                    //Checks if the first name contains only letters 
+                    if (preg_match('/[^A-Za-z]/', $first_name)) {
+                        $data['status']['type'] = "warning";
+                        $data['status']['message'] = "The first name can contain only letters";
+                    } else {
+                        //Checks if the last name contains only letters
+                        if(preg_match('/[^A-Za-z]/', $last_name)) {
+                            $data['status']['type'] = "warning";
+                            $data['status']['message'] = "The last name can contain only letters";
+                        } else {
+                            // SUCCESSFUL PART
+                            $salt = '5&JDDlwz%Rwh!t2Yg-Igae@QxPzFTSId';
+                            $enc_pass = md5($salt . $password_one);
+                            //Password is encripted
+                            $this->queries->create_account($username, $enc_pass, $email_address, $first_name, $last_name);
+                            //User information is added in the database
+                            $get_user_information = $this->queries->get_username($username);
+                            $this->session->set_userdata(array(
+                                'id' => $get_user_information['id'],
+                                'username' => $get_user_information['username'],
+                                'is_logged_in' => true,
+                                'user_level' => $get_user_information['access_level']
+                         ));
+                            //If the user is succesfuly registerd, he is redirected to the dashboard
+                            redirect('dashboard');
+                            }
+                         }
+                    }
             $this->load->view('snippets/header', $data);
             $this->load->view('vwRegister');
             $this->load->view('snippets/footer');
         }
+    }
     }
 
     public function logout() {
