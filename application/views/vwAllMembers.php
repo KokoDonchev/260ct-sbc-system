@@ -43,7 +43,13 @@
                                                 <td><?php echo $more_user_info['email_address'] ?></td>
                                                 <td><?php echo $this->level_management->get_user_level($user['id']) ?></td>
                                                 <td><?php if($user['membership_level']==1): echo "Basic"; else: echo "Royal"; endif; ?></td>
-                                                <td>Options</td>
+                                                <td>
+													<a href="<?= base_url()."members/remove/".$user['id'] ?>" title="Remove"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                	/
+													<a href="<?= base_url()."members/make_instructor/".$user['id'] ?>" title="Make insructor"><i class="fa fa-user-md" aria-hidden="true"></i></a>
+													/
+													<a href="<?= base_url()."members/make_slope/".$user['id'] ?>" title="Make slope operator"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                                </td>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
