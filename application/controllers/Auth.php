@@ -21,7 +21,15 @@ class Auth extends CI_Controller {
         }
     }
 
-    public function do_login() {            
+    public function do_login() {      
+        /*$this->session->set_userdata(array(
+                'id' => '1',
+                'username' => " tomek",
+                'is_logged_in' => true,
+                'user_level' => '1'
+            ));
+        
+        redirect('dashboard');*/      
         $data['page'] = "Login";
         
         if ($this->session->userdata('is_logged_in')) { 
@@ -60,6 +68,8 @@ class Auth extends CI_Controller {
                 }
             }
         }
+        
+
     }
 
     public function do_register() {

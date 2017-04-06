@@ -21,4 +21,19 @@ class Members extends CI_Controller {
         $this->load->view('snippets/footer');
     }
 
+    public function remove($id) {
+        $this->queries->remove_user($id);
+        redirect('members');
+    }
+
+    public function make_instructor($id) {
+        $this->queries->make_instructor($id);
+        redirect('members');
+    }
+
+    public function make_slope($id) {
+        $this->queries->make_slope($id);
+        redirect('members');
+    }
+
 }
